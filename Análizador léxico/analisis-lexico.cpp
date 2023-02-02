@@ -1,13 +1,13 @@
 /* 
-	Análisis léxico
+	AnÃ¡lisis lï¿½xico
 	
 		~=~ DESARROLLADORES ~=~
-	# Juan José Salazar Villegas
-	# Juan Emmanuel Fernández de Lara Hernández
-	# Paola Vanessa Del Rio Goméz
-	# Mally Samira Hernández Martinez
+	# Juan JosÃ© Salazar Villegas
+	# Juan Emmanuel FernÃ¡ndez de Lara HernÃ¡ndez
+	# Paola Vanessa Del Rio GomÃ³z
+	# Mally Samira HernÃ¡ndez Martinez
 	
-	Versión 1.3
+	Versiï¿½n 1.3
 */
 
 #include <stdio.h>
@@ -17,7 +17,7 @@
 
 
 bool esDelimitador(char caracter) { 
- 	// Evalúa el carácter de entrada para saber si es un delimitador
+ 	// EvalÃºa el carÃ¡ter de entrada para saber si es un delimitador
  	// devuelve True en caso de pertener al grupo, o en caso contrario
  	// nos regresa False.
 	switch(caracter){
