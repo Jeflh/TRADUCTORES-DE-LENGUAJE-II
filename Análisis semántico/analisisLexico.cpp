@@ -2,22 +2,25 @@
 #include <vector>
 #include <string>
 #include <cstring>
+#include <algorithm>
 
 using namespace std;
 
-vector <string> identificadores = {" "};
+vector <string> identificadores = {"prueba"};
+vector <string> tipoIdentificador = {"int"};
+
 const char* reservadas[16] = { "if", "else", "while", "do", "for", "break", "continue", "int", "double", "float", "return", "char", "string", "unsigned", "void", "print"};
 const char* tipoDatos[7] = { "int", "double", "float", "char", "string", "unsigned", "void"};
 
-char input[255], token[32], tokenReservado[32], ch;
+char input[255], token[32], tokenReservado[32], ch, tipoDeDato[32];
 int i = 0, res = -1, num;
 
+int posicion;
 
 void analisisLexico() {
 
   int j = 0;
   bool find = false;
-  bool declarado = false;
   
   // limpiar el token
   for (int i = 0; i < 32; i++) {
@@ -59,24 +62,41 @@ void analisisLexico() {
               break;
             }
           }
-          res = 1; // Identificador valido
-          break;
+
+          auto it = std::find(identificadores.begin(), identificadores.end(), token);
+
+          if (it != identificadores.end()) {
+            posicion = distance(identificadores.begin(), it);
+          }
+          
+          if(tipoIdentificador[posicion] == "string"){
+            res = 51; // Identificador repetido
+          }
+          else{
+            res = 1; // Identificador repetido
+          }
         }
         else {
           for (int i = 0; i < 7; i++) {
             if (strcmp(tipoDatos[i], tokenReservado) == 0) { 
               if (identificadores[k] == " ") {
                 identificadores[k] = token;
+                tipoIdentificador[k] = tokenReservado;
               }
-              declarado = true;
-              res = 1; // Identificador valido
               identificadores.push_back(token); // Agregar a la lista
+              tipoIdentificador.push_back(tokenReservado); // Agregar a la lista
+
+              if (strcmp(tokenReservado, "string") == 0){
+                res = 51; // Identificador repetido
+              }
+              else{
+                res = 1; // Identificador repetido
+              }
               break;
             }else {
               res = 50; // Identificador no declarado
             }
           }
-          break;
         }        
         k++;
       }

@@ -25,10 +25,10 @@ int analisisSintactico() {
     analisisLexico();
     // Disponible 47 - 49
     switch(res) {
-      case -1:
-        cout << "[Error] Caracter no valido: " << token << endl;
-        archivo << "error|";
-        break;
+      // case -1:
+      //   cout << "[Error] Caracter no valido: " << token << endl;
+      //   archivo << "error|";
+      //   break;
 
       case 0:
         cout << "[Error] El identificador no puede ser una palabra reservada: " << token << endl;
@@ -39,6 +39,11 @@ int analisisSintactico() {
       case 1:
         // cout << "[Identificador] " << token << endl;
         archivo << "identificador|";
+        break;
+      
+      case 51:
+        // cout << "[Identificador] " << token << endl;
+        archivo << "identificadorString|";
         break;
 
       case 2:
@@ -252,22 +257,17 @@ int analisisSintactico() {
 
       case 43:
         // cout << "[Palabra reservada] " << token << endl;
-        archivo << "switch|";
+        archivo << "unsigned|";
         break;
 
       case 44:
         // cout << "[Palabra reservada] " << token << endl;
-        archivo << "case|";
+        archivo << "void|";
         break;
 
       case 45:
         // cout << "[Palabra reservada] " << token << endl;
-        archivo << "unsigned|";
-        break;
-
-      case 46:
-        // cout << "[Palabra reservada] " << token << endl;
-        archivo << "void|";
+        archivo << "print|";
         break;
     }
   } while ( res != 99);
