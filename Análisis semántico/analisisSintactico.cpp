@@ -8,6 +8,7 @@ int analisisSintactico() {
   archivo.open("compilado.txt");
 
   bool error = false;
+  bool repetido = false;
   
   i = 0;
 
@@ -19,7 +20,7 @@ int analisisSintactico() {
   } while (ch != '#');
 
   i = 0;
-  cout<<endl<<endl;
+  cout<<endl;
   do {
 
     analisisLexico();

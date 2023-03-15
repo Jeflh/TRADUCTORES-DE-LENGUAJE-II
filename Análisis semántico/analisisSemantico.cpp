@@ -180,6 +180,12 @@ int main(){
           else if (tokenAlmacenado == "numero"){
             tokenAnterior = "numero";
           }
+          else if (tokenAlmacenado == "repetido"){
+            error = true;
+          }
+          else if (tokenAlmacenado == "error"){
+            error = true;
+          }
         }
         
         if (tokenCondicion == "if"){
@@ -465,6 +471,7 @@ int main(){
     }
 
     compilado.close();
+    cout<<endl;
     system("pause");
     system("cls");
   }while (true);

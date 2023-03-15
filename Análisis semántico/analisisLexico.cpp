@@ -6,8 +6,8 @@
 
 using namespace std;
 
-vector <string> identificadores = {"prueba"};
-vector <string> tipoIdentificador = {"int"};
+vector <string> identificadores = {" "};
+vector <string> tipoIdentificador = {" "};
 
 const char* reservadas[16] = { "if", "else", "while", "do", "for", "break", "continue", "int", "double", "float", "return", "char", "string", "unsigned", "void", "print"};
 const char* tipoDatos[7] = { "int", "double", "float", "char", "string", "unsigned", "void"};
@@ -16,12 +16,13 @@ char input[255], token[32], tokenReservado[32], ch, tipoDeDato[32];
 int i = 0, res = -1, num;
 
 int posicion;
+bool repetido = false;
 
 void analisisLexico() {
 
   int j = 0;
   bool find = false;
-  
+
   // limpiar el token
   for (int i = 0; i < 32; i++) {
     token[i] = '\0';
@@ -56,30 +57,36 @@ void analisisLexico() {
 
       while(k < identificadores.size()){  
         if (identificadores[k] == token) {
-          for (int i = 0; i < 7; i++) {
-            if (strcmp(tipoDatos[i], tokenReservado) == 0) { 
-              res = 2; // Identificador repetido
-              break;
+
+          if (!repetido){
+
+            for (int i = 0; i < 7; i++) {
+              if (strcmp(tipoDatos[i], tokenReservado) == 0) { 
+                res = 2; // Identificador repetido
+                repetido = true;
+                break;
+              }
             }
           }
-
+           
           auto it = std::find(identificadores.begin(), identificadores.end(), token);
 
           if (it != identificadores.end()) {
             posicion = distance(identificadores.begin(), it);
           }
-          
-          if(tipoIdentificador[posicion] == "string"){
+
+          if (tipoIdentificador[posicion] == "string"){
             res = 51; // Identificador repetido
           }
-          else{
+          else if (res !=2){
             res = 1; // Identificador repetido
           }
+          
         }
         else {
           for (int i = 0; i < 7; i++) {
             if (strcmp(tipoDatos[i], tokenReservado) == 0) { 
-              if (identificadores[k] == " ") {
+              if (identificadores[k] == " " && tipoIdentificador[k] == " ") {
                 identificadores[k] = token;
                 tipoIdentificador[k] = tokenReservado;
               }
