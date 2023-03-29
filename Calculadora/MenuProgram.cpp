@@ -17,7 +17,6 @@ void MenuProgram::menu()
         system ("color 3");
         cout << endl << "     ==== [CALCULADORA PROGRAMACION MIXTA] ==== "<<endl;
         cout << "    	  	 (Ensamblador y C++) "<<endl;
-        cout << "        By: Juan Jose Salazar Villegas "<<endl;
         cout << endl << " 	===========[MENU PRINCIPAL]======="<<endl;
         cout << " 	 [1] Operaciones basicas          "<<endl;
 		cout << " 	 [2] Operaciones trigonometricas  "<<endl; 
