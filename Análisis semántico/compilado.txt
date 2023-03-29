@@ -1,1 +1,1 @@
-int|identificador|=|numero|;|
+int|identificador|=|numero|;|int|identificador|=|numero|;|

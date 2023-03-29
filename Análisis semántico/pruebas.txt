@@ -1,0 +1,41 @@
+ 
+int numero = 10;
+string texto = "hola mundo";
+int resultado = texto + numero;
+
+#
+
+-------------------------------
+ 
+int indice = 20;
+
+if ( indice  {
+  print("Hola Mundo");
+}
+
+#
+
+------------------------------
+ 
+int numero = 10;
+int numero = 20;
+ 
+#
+
+
+------------------------------
+ 
+variable = 20;
+
+#
+
+-----------------------------
+
+ 
+int variable = 20;
+
+while( variable2  {
+  print("Hasta la proxima");
+}
+
+#
